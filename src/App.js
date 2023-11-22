@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React ,{useState} from "react";
+import Product from "./Components/Product";
+import Header from "./Components/UI/Header";
+import Itemprovider from "./Store/Itemprovider";
+import Cart from "./Components/Cart/Cart";
+function App(props) {
 
-function App() {
+  const [Hidecart, setHidecart]= useState(false)
+
+  const showcart=()=>{
+    setHidecart(true)
+  }
+
+  const hidecart=()=>{
+    setHidecart(false)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Itemprovider>
+      {Hidecart && <Cart onClose={hidecart}/>}
+      <Header onOpen={showcart} />
+      <Product />
+   
+    </Itemprovider>
   );
 }
 
