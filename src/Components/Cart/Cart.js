@@ -1,14 +1,12 @@
-import React, { Fragment, useContext } from "react";
-import Itemprovider from "../../Store/Itemprovider";
-import "./Cart.css"; 
+import React, { useContext } from "react";
+
+import "./Cart.css";
 import Itemstore from "../../Store/Itemstore";
 import Modal from "../UI/Modal";
 import { Card, Container, Row } from "react-bootstrap";
 
 const Cart = (props) => {
   const cartctx = useContext(Itemstore);
-
-  
 
   return (
     <Modal>
@@ -18,7 +16,11 @@ const Cart = (props) => {
         {cartctx.cart.map((cartitem) => (
           <Row>
             <Card className="shadow-lg">
-              <Card.Img variant="top" src={cartitem.imageUrl} style={{ width: '100px' }} />
+              <Card.Img
+                variant="top"
+                src={cartitem.imageUrl}
+                style={{ width: "100px" }}
+              />
               <Card.Body>
                 <Card.Title>{cartitem.title}</Card.Title>
                 <Card.Text>Price: ${cartitem.price}</Card.Text>
