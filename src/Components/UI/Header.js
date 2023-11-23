@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import Itemstore from "../../Store/Itemstore";
+import classes from './Header.module.css'
 
 const Header = (props) => {
   const cartctx = useContext(Itemstore);
@@ -14,10 +15,10 @@ const Header = (props) => {
     <Fragment>
       <Navbar bg="dark" expand="sm" variant="dark">
         <Container>
-          <Nav>
+          <Nav >
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Store</Nav.Link>
-            <Nav.Link href="#pricing">About</Nav.Link>
+            <Nav.Link href="/store">Store</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
           </Nav>
           <Nav>
             <Navbar.Text>{totalcount}</Navbar.Text>
@@ -27,6 +28,10 @@ const Header = (props) => {
           </Nav>
         </Container>
       </Navbar>
+      <header className={classes.header}>
+        <h1 className={classes.h1}>The Generics</h1>
+      </header>
+
     </Fragment>
   );
 };

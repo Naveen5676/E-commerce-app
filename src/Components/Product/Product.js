@@ -1,6 +1,7 @@
 import React, { Fragment , useContext } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import Itemstore from "../Store/Itemstore";
+import Itemstore from "../../Store/Itemstore";
+import Header from "../UI/Header";
 
 const Product = () => {
 
