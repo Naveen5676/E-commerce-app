@@ -1,13 +1,17 @@
 
 footer {
-    background-color: #67d6de; 
+    background-color: #56CCF2; 
     padding: 20px 0; 
     color: white;
     text-align: center;
   }
   
   .footertitle {
-    font-size: 24px;
+    text-align: center;
+    color: white;
+    width: 50%;
+    font-size: 50px;
     font-weight: bold;
+    margin: 0 auto;
   }
   

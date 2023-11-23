@@ -6,12 +6,14 @@ import Cart from "./Components/Cart/Cart";
 import {createBrowserRouter , RouterProvider} from 'react-router-dom'
 import About from "./Components/About/About";
 import Footer from "./Components/UI/Footer";
+import Home from "./Components/Home/Home";
 
 
 const router = createBrowserRouter([
   {path :'/', element: <Product/>},
   {path :'/store', element: <Product/>},
   {path :'/about', element: <About/>},
+  {path :'/home', element: <Home/>},
 ])
 
 
