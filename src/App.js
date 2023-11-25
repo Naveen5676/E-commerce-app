@@ -3,12 +3,12 @@ import Product from "./Components/Product/Product";
 import Header from "./Components/UI/Header";
 import Itemprovider from "./Store/Itemprovider";
 import Cart from "./Components/Cart/Cart";
-import {Route} from 'react-router-dom';
+import {Route, Redirect , Switch} from 'react-router-dom';
 import About from "./Components/About/About";
 import Footer from "./Components/UI/Footer";
 import Home from "./Components/Home/Home";
 import Contact from "./Components/Contact/Contact";
-
+import ProductDetails from "./Components/Product/ProductDetails";
 
 
 // const router = createBrowserRouter([
@@ -35,7 +35,11 @@ function App(props) {
     <Itemprovider>
       {Hidecart && <Cart onClose={hidecart}/>}
       <Header onOpen={showcart} />
-      <Route path='/store'>
+      <Switch>
+      <Route path='/' exact>
+        <Redirect to='/store'/>
+      </Route>
+      <Route path='/store' exact>
         <Product/>
       </Route>
       <Route path='/about'>
@@ -47,6 +51,10 @@ function App(props) {
       <Route path='/contact'>
         <Contact/>
       </Route>
+      <Route path='/store/:productID'>
+        <ProductDetails/>
+      </Route>
+      </Switch>
       <Footer/>
    
     </Itemprovider>
