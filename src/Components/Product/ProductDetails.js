@@ -1,8 +1,7 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, {  useContext } from "react";
 import { useParams } from "react-router-dom";
 import Itemstore from "../../Store/Itemstore";
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
-import Contact from "../Contact/Contact";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -13,7 +12,6 @@ const ProductDetails = () => {
   context.product.map((item) => {
     if (item.id === params.productID) {
       product = item;
-      return product;
     }
     return item;
   });

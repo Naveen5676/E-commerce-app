@@ -1,63 +1,66 @@
-import React ,{useState} from "react";
+import React, { useContext, useState, Fragment } from "react";
 import Product from "./Components/Product/Product";
 import Header from "./Components/UI/Header";
-import Itemprovider from "./Store/Itemprovider";
 import Cart from "./Components/Cart/Cart";
-import {Route, Redirect , Switch} from 'react-router-dom';
+import { Route, Redirect, Switch } from "react-router-dom";
 import About from "./Components/About/About";
 import Footer from "./Components/UI/Footer";
 import Home from "./Components/Home/Home";
 import Contact from "./Components/Contact/Contact";
 import ProductDetails from "./Components/Product/ProductDetails";
-
-
-// const router = createBrowserRouter([
-//   {path :'/', element: <Product/>},
-//   {path :'/store', element: <Product/>},
-//   {path :'/about', element: <About/>},
-//   {path :'/home', element: <Home/>},
-// ])
-
+import Login from "./Components/Login/Login";
+import Itemstore from "./Store/Itemstore";
 
 function App(props) {
+  const itemctx = useContext(Itemstore);
+  const [Hidecart, setHidecart] = useState(false);
 
-  const [Hidecart, setHidecart]= useState(false)
+  const isLoggedIn = itemctx.isLoggedIn;
 
-  const showcart=()=>{
-    setHidecart(true)
-  }
+  const showcart = () => {
+    setHidecart(true);
+  };
 
-  const hidecart=()=>{
-    setHidecart(false)
-  }
+  const hidecart = () => {
+    setHidecart(false);
+  };
 
   return (
-    <Itemprovider>
-      {Hidecart && <Cart onClose={hidecart}/>}
+    <Fragment>
+      {console.log(isLoggedIn)}
+      {Hidecart && <Cart onClose={hidecart} />}
       <Header onOpen={showcart} />
       <Switch>
-      <Route path='/' exact>
-        <Redirect to='/store'/>
-      </Route>
-      <Route path='/store' exact>
-        <Product/>
-      </Route>
-      <Route path='/about'>
-        <About/>
-      </Route>
-      <Route path='/home'>
-        <Home/>
-      </Route>
-      <Route path='/contact'>
-        <Contact/>
-      </Route>
-      <Route path='/store/:productID'>
-        <ProductDetails/>
-      </Route>
+        <Route path="/" exact>
+          <Redirect to="/login" />
+        </Route>
+        <Route path="/store" exact>
+          {isLoggedIn && <Product />}
+          {!isLoggedIn && <Redirect to="/about" />}
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+        {isLoggedIn && (
+          <Route path="/store/:productID">
+            <ProductDetails />
+          </Route>
+        )}
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="*">
+          <Redirect to="/login" />
+        </Route>
       </Switch>
-      <Footer/>
-   
-    </Itemprovider>
+      <Footer />
+    </Fragment>
   );
 }
 

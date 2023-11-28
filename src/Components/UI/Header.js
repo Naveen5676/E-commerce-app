@@ -3,9 +3,16 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import Itemstore from "../../Store/Itemstore";
 import classes from "./Header.module.css";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Header = (props) => {
   const cartctx = useContext(Itemstore);
+  const history = useHistory();
+
+  const logoutHandler=()=>{
+      cartctx.logout();
+      history.replace("/login");
+  }
 
   let totalcount = 0;
   cartctx.cart.forEach((cartitem) => {
@@ -27,6 +34,9 @@ const Header = (props) => {
               <NavLink to="/about">About</NavLink>
             </ul>
             <ul>
+              <NavLink to="/login">Login</NavLink>
+            </ul>
+            <ul>
               <NavLink to="/contact">Countact Us</NavLink>
             </ul>
           </Nav>
@@ -34,6 +44,9 @@ const Header = (props) => {
             <Navbar.Text>{totalcount}</Navbar.Text>
             <Button variant="light" onClick={props.onOpen}>
               Cart
+            </Button>
+            <Button variant="light" onClick={logoutHandler}>
+              Logout
             </Button>
           </Nav>
         </Container>
