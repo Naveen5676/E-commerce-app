@@ -36,7 +36,7 @@ function App(props) {
         </Route>
         <Route path="/store" exact>
           {isLoggedIn && <Product />}
-          {!isLoggedIn && <Redirect to="/about" />}
+          {!isLoggedIn && <Redirect to="/login" />}
         </Route>
         <Route path="/about">
           <About />
