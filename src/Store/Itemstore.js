@@ -4,9 +4,11 @@ const Itemstore= React.createContext({
     cart:[],
     product:[],
     addToCart: (item) => {},
+    removefromCart:(id)=>{},
     token: "",
     isLoggedIn: false,
     login: (token) => {},
+    getemail:(email)=>{},
     logout: () => {},
     
 

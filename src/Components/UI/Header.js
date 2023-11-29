@@ -27,9 +27,9 @@ const Header = (props) => {
             <ul>
               <NavLink to="/home">Home</NavLink>
             </ul>
-            {/* <ul>
+            {cartctx.isLoggedIn && <ul>
               <NavLink to="/store">Store</NavLink>
-            </ul> */}
+            </ul>}
             <ul>
               <NavLink to="/about">About</NavLink>
             </ul>
@@ -41,13 +41,13 @@ const Header = (props) => {
             </ul>
           </Nav>
           <Nav>
-            <Navbar.Text>{totalcount}</Navbar.Text>
-            <Button variant="light" onClick={props.onOpen}>
+          {cartctx.isLoggedIn &&<Navbar.Text>{totalcount}</Navbar.Text>}
+            {cartctx.isLoggedIn &&<Button variant="light" onClick={props.onOpen}>
               Cart
-            </Button>
-            <Button variant="light" onClick={logoutHandler}>
+            </Button>}
+            {cartctx.isLoggedIn &&<Button variant="light" onClick={logoutHandler}>
               Logout
-            </Button>
+            </Button>}
           </Nav>
         </Container>
       </Navbar>

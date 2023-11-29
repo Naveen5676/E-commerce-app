@@ -44,7 +44,9 @@ const Login = () => {
       })
       .then((data) => {
         itemctx.login(data.idToken);
+        itemctx.getemail(eneteredEmail)
         history.replace("/store");
+
       })
       .catch((err) => {
         alert(err.message);
