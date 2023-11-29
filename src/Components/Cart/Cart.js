@@ -16,7 +16,9 @@ const Cart = (props) => {
   })
   return (
     <Modal>
-      <button onClick={props.onClose}>Close</button>
+      <div className="d-flex justify-content-end">
+      <button onClick={props.onClose} style={{ border: '1px solid #6c757d', padding: '5px 10px' }}>X</button>
+      </div>
       {/* <Container>
         <Row className="justify-content-center">
           <Col xs lg="12" xl="8">
@@ -32,7 +34,7 @@ const Cart = (props) => {
         </Row>
       </Container> */}
 
-      <Container>
+      <Container style={{ maxHeight: '90vh', overflowY: 'auto' }}>
         <Card className="shadow-lg mb-3">
           <Row>
             <Col md={6}>
@@ -68,14 +70,14 @@ const Cart = (props) => {
                 <Card.Text className="border border-primary p-2">
                   {cartitem.quantity}
                 </Card.Text>
-                <button
+                <Button
                   variant="danger"
                   onClick={() => {
                     removeHandler(cartitem.deleteid);
                   }}
                 >
                   Remove
-                </button>
+                </Button>
               </Col>
               <hr style={{ color: "black" }} />
             </Row>

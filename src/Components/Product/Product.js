@@ -11,8 +11,8 @@ const Product = () => {
       <Container className="mt-3">
         <Row>
           {cartctx.product.map((product) => (
-            <Col key={product.id} xs={4}>
-              <Card className="shadow-lg , mt-3">
+            <Col key={product.id} style={{ margin: "2.5rem" , marginBottom:'10px' }} lg={5}>
+              <Card className="shadow-lg , mt-2 mb-0">
                 <Link to={`/store/${product.id}`}>
                   <Card.Img variant="top" src={product.imageUrl} />
                 </Link>
