@@ -1,15 +1,17 @@
-import React, { useContext, useState, Fragment } from "react";
-import Product from "./Components/Product/Product";
-import Header from "./Components/UI/Header";
-import Cart from "./Components/Cart/Cart";
+import React, { useContext, useState, Fragment, lazy, Suspense } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import About from "./Components/About/About";
+import Header from "./Components/UI/Header";
 import Footer from "./Components/UI/Footer";
-import Home from "./Components/Home/Home";
-import Contact from "./Components/Contact/Contact";
-import ProductDetails from "./Components/Product/ProductDetails";
 import Login from "./Components/Login/Login";
 import Itemstore from "./Store/Itemstore";
+
+// Lazy-loaded components
+const Product = lazy(() => import("./Components/Product/Product"));
+const Cart = lazy(() => import("./Components/Cart/Cart"));
+const About = lazy(() => import("./Components/About/About"));
+const Home = lazy(() => import("./Components/Home/Home"));
+const Contact = lazy(() => import("./Components/Contact/Contact"));
+const ProductDetails = lazy(() => import("./Components/Product/ProductDetails"));
 
 function App(props) {
   const itemctx = useContext(Itemstore);
@@ -27,7 +29,8 @@ function App(props) {
 
   return (
     <Fragment>
-      {console.log(isLoggedIn)}
+      {/* {console.log(isLoggedIn)} */}
+      <Suspense fallback={<p>Loading....</p>}>
       {Hidecart && <Cart onClose={hidecart} />}
       <Header onOpen={showcart} />
       <Switch>
@@ -59,6 +62,7 @@ function App(props) {
           <Redirect to="/login" />
         </Route>
       </Switch>
+      </Suspense>
       <Footer />
     </Fragment>
   );

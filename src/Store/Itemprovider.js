@@ -64,7 +64,7 @@ const Itemprovider = (props) => {
             ? storedEmail.replace(/[@.]/g, "")
             : "";
           const response = await fetch(
-            `https://crudcrud.com/api/904277ae10fa4e97bacd46b58c3be17f/${updatedEmail}`
+            `https://crudcrud.com/api/9d059bd0edd142c69d401d532a6f9477/${updatedEmail}`
           );
           const data = await response.json();
           setCartElements(data.map((cartItem) => ({...cartItem.item, deleteid: cartItem._id})));
@@ -102,7 +102,7 @@ const Itemprovider = (props) => {
       };
 
       fetch(
-        `https://crudcrud.com/api/904277ae10fa4e97bacd46b58c3be17f/${updatedEmail}`,
+        `https://crudcrud.com/api/9d059bd0edd142c69d401d532a6f9477/${updatedEmail}`,
         {
           method: "POST",
           headers: {
@@ -135,7 +135,7 @@ const Itemprovider = (props) => {
       // Remove "@" and "." from the email address
       const updatedEmail = storedemail.replace(/[@.]/g, "");
       fetch(
-        `https://crudcrud.com/api/904277ae10fa4e97bacd46b58c3be17f/${updatedEmail}/${deleteid}`,
+        `https://crudcrud.com/api/9d059bd0edd142c69d401d532a6f9477/${updatedEmail}/${deleteid}`,
         {
           method: "DELETE", // Use PUT method to update the entire cart
           headers: {
